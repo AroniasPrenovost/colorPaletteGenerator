@@ -1,0 +1,44 @@
+body { 
+    padding:2em;
+    overflow-y: hidden;  
+}
+
+.header { 
+    padding:1em 0; 
+}
+
+.col { 
+    background: #ccc; 
+    padding:1em 0; 
+    text-align:center;
+}
+
+.lockIcon {
+    font-weight:normal;
+    color:black;
+    display:block;
+    position: relative;
+    margin-bottom: 30px;
+    bottom: 0;
+}
+
+input.colorInput {
+  text-align:center;
+  font-size: 30px;
+  width:100%;
+  margin-bottom: 40px;
+  bottom: 0;
+  border: none;
+  background-color:transparent;
+}
+
+input.colorInput:focus {
+  outline-width: 0;
+}
+
+/* resizing input field to match input */ 
+/* fix bug to disable after 1st click */ 
+input, span {
+    padding:0;
+    /* white-space:pre;*/
+}

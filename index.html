@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Color Palette Gen</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Responsive and mobile friendly stuff -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="src/css/html5.css" media="all">
+    <link rel="stylesheet" type="text/css" href="src/css/col.css" media="all">
+    <link rel="stylesheet" type="text/css" href="src/css/6cols.css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" crossorigin="anonymous" />
+    <style>
+    /* overwrite default */    
+    .fa {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Color palette generator.</h1>
+        <br>
+        <p>Use spacebar to generate colors.</p>
+    </div>
+
+    <div class="section group">
+        <div class="col span_1_of_6">
+            <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt"></div>
+            <input type="text" name="colorOne" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)" onfocusout="prependHash()">               
+        </div>
+
+        <div class="col span_1_of_6">
+            <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
+            </div>        
+            <input type="text" name="colorTwo" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">       
+        </div>
+
+        <div class="col span_1_of_6">
+            <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
+            </div>      
+            <input type="text" name="colorThree" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">         
+        </div>
+
+        <div class="col span_1_of_6">
+            <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
+            </div>    
+            <input type="text" name="colorFour" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">           
+        </div>
+
+        <div class="col span_1_of_6">
+            <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
+            </div>     
+            <input type="text" name="colorFive" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">          
+        </div>
+
+        <div class="col span_1_of_6">
+            <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
+            </div>  
+            <input type="text" name="colorSix" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">             
+        </div>
+    </div>
+
+<script>        
+function prependHash() {
+    // alert(this.value)
+    let str = this.value.substring(1);
+    str = '#' + str;
+    this.value = str;
+}
+</script>
+
+<script src="dist/bundle.js"></script>
+</body>
+</html>
