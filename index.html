@@ -36,46 +36,80 @@
     <div class="section group">
         <div class="col span_1_of_6">
             <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt"></div>
-            <input type="text" name="colorOne" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)" onfocusout="prependHash()">               
+            <input type="text" name="colorOne" value="" class="colorInput" 
+                    onClick="this.setSelectionRange(0, this.value.length);getCurrentColor(this.value)" 
+                    onfocusout="validateEntry(0)">               
         </div>
 
         <div class="col span_1_of_6">
             <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
             </div>        
-            <input type="text" name="colorTwo" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">       
+            <input type="text" name="colorTwo" value="" class="colorInput" 
+                    onClick="this.setSelectionRange(0, this.value.length);getCurrentColor(this.value)" 
+                    onfocusout="validateEntry(1)">       
         </div>
 
         <div class="col span_1_of_6">
             <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
             </div>      
-            <input type="text" name="colorThree" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">         
+            <input type="text" name="colorThree" value="" class="colorInput" 
+                    onClick="this.setSelectionRange(0, this.value.length);getCurrentColor(this.value)" 
+                    onfocusout="validateEntry(2)">         
         </div>
 
         <div class="col span_1_of_6">
             <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
             </div>    
-            <input type="text" name="colorFour" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">           
+            <input type="text" name="colorFour" value="" class="colorInput" 
+                    onClick="this.setSelectionRange(0, this.value.length);getCurrentColor(this.value)" 
+                    onfocusout="validateEntry(3)">           
         </div>
 
         <div class="col span_1_of_6">
             <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
             </div>     
-            <input type="text" name="colorFive" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">          
+            <input type="text" name="colorFive" value="" class="colorInput" 
+                    onClick="this.setSelectionRange(0, this.value.length);getCurrentColor(this.value)" 
+                    onfocusout="validateEntry(4)">          
         </div>
 
         <div class="col span_1_of_6">
             <div id="lockIcon" class="lockIcon noselect fa fa-unlock-alt">
             </div>  
-            <input type="text" name="colorSix" value="" class="colorInput" onClick="this.setSelectionRange(0, this.value.length)">             
+            <input type="text" name="colorSix" value="" class="colorInput" 
+                    onClick="this.setSelectionRange(0, this.value.length);getCurrentColor(this.value)" 
+                    onfocusout="validateEntry(5)">             
         </div>
     </div>
 
-<script>        
-function prependHash() {
-    // alert(this.value)
-    let str = this.value.substring(1);
-    str = '#' + str;
-    this.value = str;
+
+<!-- check inputs, if invalid, revert to previous --> 
+<script>    
+function isValidHex(hex) {
+    if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(hex) === true) { 
+        return true;
+    }   return false;
+}
+
+var prevColor;
+function getCurrentColor(arg){
+    prevColor = arg;
+}
+
+function validateEntry(Index) {
+    var inputs = document.getElementsByClassName('colorInput');
+    var color = inputs[Index].value;
+    if (color[0] !== '#') {
+        color = '#' + color;
+    }
+
+    // if still invalid, revert to previous 
+    if (!isValidHex(color)) {
+        inputs[Index].value = prevColor;
+    } else {
+        inputs[Index].value = color;
+        inputs[Index].parentElement.style.backgroundColor = color;
+    }
 }
 </script>
 

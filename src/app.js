@@ -28,13 +28,7 @@ document.body.onkeyup = function(e){
         });
     }
 }
-
-// update background color based on input
-// to do... 
-
-// if invalid, revert
-// to do... 
-
+ 
 // toggle color lock 
 billIcons.forEach((element, index, array) => {
     array[index].onclick = function() {
