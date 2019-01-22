@@ -1,5 +1,4 @@
 import {genHexColor} from './modules/colorGen';
-// import {prependHash} from './modules/inputFocus';
 
 const colorInputs = [...document.getElementsByClassName('colorInput')];
 const billIcons = [...document.getElementsByClassName('lockIcon')];
