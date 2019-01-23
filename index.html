@@ -24,12 +24,12 @@
 </style>
 </head> 
 <body>
-    <div class="containerDiv">
+    <div id="container">
         <div class="header">
             <h1>Color palette generator.</h1>
             <br>
             <p>Use spacebar to generate colors.</p>
-            <button id="create_pdf">PDF PRINT</button>
+            <button id="pdfGen">PDF PRINT</button>
         </div>
 
         <div class="section group" id="colorPalette">
@@ -113,44 +113,25 @@ function validateEntry(Index) {
 </script>
 
 <!-- PDF generator --> 
-<script type="text/javascript" src="//cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script type="text/javascript" src="//cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 <script>
-(function(){
-    var container = $('.containerDiv'),
-    cache_width = container.width(),
-    a4  =[ 595.28,  841.89];  // for a4 size paper width and height
 
-    $('#create_pdf').on('click',function(){
-        $('body').scrollTop(0);
-        createPDF();
+var btn = document.getElementById('pdfGen');
+btn.onclick = function() {
+  generatePDF();
+};
+
+function generatePDF() {
+    var pdf = new jsPDF('p', 'pt', 'a4');
+    var container = document.getElementById('container');
+
+    pdf.addHTML(container, function() {
+        ps_filename = 'color-palette';
+        pdf.save(ps_filename+'.pdf');
     });
-
-    //create pdf
-    function createPDF(){
-        getCanvas().then(function(canvas){
-            var 
-            img = canvas.toDataURL("image/png"),
-            doc = new jsPDF({
-                unit:'px', 
-                format:'a4'
-            });     
-            doc.addImage(img, 'JPEG', 20, 20);
-            doc.save('techumber-html-to-pdf.pdf');
-            container.width(cache_width);
-        });
-    }
-
-    // create canvas object
-    function getCanvas(){
-        container.width((a4[0]*1.33333) -80).css('max-width','none');
-        return html2canvas(container,{
-            imageTimeout:2000,
-            removeContainer:true
-        }); 
-    }
-}());
+}
+// fix blurry PDF by enhancing #container size.
 </script>
 
 <script src="dist/bundle.js"></script>
