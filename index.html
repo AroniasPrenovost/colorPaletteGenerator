@@ -123,6 +123,13 @@ btn.onclick = function() {
 };
 
 function generatePDF() {
+
+    var specialElementHandlers = {
+        '#lockIcon' : function(element, render) {
+            return true;
+        }
+    }
+
     var pdf = new jsPDF('p', 'pt', 'a4');
     var container = document.getElementById('container');
 
@@ -130,8 +137,7 @@ function generatePDF() {
         ps_filename = 'color-palette';
         pdf.save(ps_filename+'.pdf');
     });
-}
-// fix blurry PDF by enhancing #container size.
+}// fix blurry PDF by enhancing #container size.
 </script>
 
 <script src="dist/bundle.js"></script>

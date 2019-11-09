@@ -1,5 +1,11 @@
-# Gulp, Sass, webpack and ES6 modules boilerplate
+## Color Palette Generator 
+Inspired by https://coolors.co/
 
-## runs 'webpack -d --watch' and 'gulp watchy' simultaneously 
-# npm start 
-# colorPaletteGenerator
+## Installation 
+
+```
+$ npm install ; npm install gulp@3.9.1 --save
+```
+```
+$ npm start
+```
